@@ -1,64 +1,98 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Registrer Ny Bruger | FancyClothes.dk</title>
+    <meta name="description" content="Velkommen til FancyClothes.dk">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lato|Oswald" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/slider.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
 <?php
     include_once "header.php";
 ?>
 
 
-<main>
+<main class="container">
     <form action="" method="post" class="new">
-    <h1>Create New User</h1>
+    <h1>Opret ny bruger</h1>
         <div class="lbl">
-            <label for="imgSrc">Enter user name</label>
+            <label for="imgSrc">Indtast ønskede brugernavn</label>
             <div class="input">
                 <input type="text" name="newUserName" placeholder="Example: Natascha">
             </div>
         </div>
 
         <div class="lbl">
-            <label for="imgAlt">Enter password again</label>
+            <label for="userPassword1">Indtast dit ønskede kodeord</label>
+            <div class="input">
+                <input type="password" id="newPassword1" name="newPassword1" placeholder="">
+            </div>
+        </div>
+
+        <div class="lbl">
+            <label for="userPassword2">Indtast kodeord igen</label>
             <div class="input">
                 <input type="password" id="newPassword2" name="newPassword2" placeholder="">
             </div>
         </div>
 
         <div class="lbl">
-            <label for="imgAlt">Enter desired password</label>
+            <label for="userEmail">Din E-mail adresse</label>
             <div class="input">
-                <input type="password" id="newPassword1" name="newPassword1" placeholder="">
+                <input type="email" id="userEmail" name="userEmail" placeholder="">
             </div>
         </div>
 
 
         <?php
-            // hvis username og password x 2 er indtastet
+            // if username and password x 2 is typed in
             if(isset($_POST['newUserName'])) {
                 $newUserName = $_POST['newUserName'];
                 $newPassword1 = $_POST['newPassword1'];
                 $newPassword2 = $_POST['newPassword2'];
+                $newUserEmail = $_POST['userEmail'];
 
-                // og begge passwords matcher
+                // and both passwords match
                 if($newPassword1 === $newPassword2) {
-                    // opret en ny bruger med det valgte navn
+                    // make a new user with the chosen name
                     include_once("./includes/connect.php");
-                    $sql = "SELECT * FROM users WHERE dbUserName = ?";
+                    $sql = "SELECT * FROM users WHERE userName = ?";
                     $stmt = $dbh->prepare($sql);
                     $stmt->execute([$newUserName]);
 
-                    // og hvis brugeren ikke allerede eksiterer i databasen
+                    // and if the user doesnt already exists in the db
                     if(empty($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-                        // så indsæt den nye bruger i databasen med det valgte brugernavn og kodeord
-                        $sql = "INSERT INTO `users` (`userId`, `dbUserName`, `userPass`, `accesLevel`) VALUES (?, ?, ?, ?);";
+                        // then insert the new user into the db
+                        $sql = "INSERT INTO `users` (`userId`, `userName`, `userPass`, `userMail`) VALUES (?, ?, ?, ?);";
                         $stmt = $dbh->prepare($sql);
-                        $stmt->execute([NULL, $newUserName, $newPassword2, 3]);
-                        echo "<h2 class=\"userCreated\">User created! You can now log in.</h2>";
+                        $stmt->execute([NULL, $newUserName, $newPassword2, $newUserEmail]);
+                        echo "<h2 class=\"userCreated\">Bruger oprettet! Du kan nu logge ind.</h2>";
                     }
                     else {
-                        // hvis brugeren allerede eksisterer
-                        echo "<h2 class=\"userError\">A user with that name already exists. Please choose another name.</h2>";
+                        // if the user already exists
+                        echo "<h4 class='userError'>En bruger med samme navn eksisterer allerede. Vælg venligst et andet brugernavn.</h4>";
                     }
                 }
                 else {
-                    // hvis begge passwords ikke matcher
-                    echo "<h2 class=\"userError\">Password doesn't match. Please type password again.</h2>";
+                    // if both passwords doesnt match
+                    echo "<h4 class='userError'>De to kodeord matcher ikke. Indtast kodeord igen.</h4>";
                 }
             }
         ?>

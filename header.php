@@ -45,10 +45,10 @@
         <a href="index.php"><img src="img/homeIcon.png" alt="Forside ikon"></a>
         
         <?php
-            // hvis session er aktiv / hvis brugerens username og password  eksisterer i databasen
+            // if session is active / if user is logged in
             if(isset($_SESSION['username'])) {
-            // skriv Welcome [username] (det brugernavn der er logget ind med)
-                echo "<h2>Welcome " . $_SESSION['username'] . "</h2>";
+                // write 'Velkommen + (the logged in username)
+                echo "<h2>Velkommen " . $_SESSION['username'] . "</h2>";
             }
         ?>
 
@@ -58,7 +58,7 @@
         <nav>
             <ul>
                 <li class="active"><a href="index.php">Forside</a></li>
-                <li><a href="#">Produkter</a></li>
+                <li><a href="products.php">Produkter</a></li>
                 <li><a href="#">Nyheder</a></li>
                 <li><a href="#">Handelsbetingelser</a></li>
                 <li><a href="#">Om os</a></li>
@@ -67,10 +67,10 @@
                 if(!isset($_SESSION['username'])) { ?>
                     <li><a href='#' class='loginBtn'>Log ind</a></li>
                     <?php
-                    // hvis ?err (i login.php) er aktiv OG ?err er lig med "noUser"
+                    // if ?err (in login.php) is active AND ?err is equal to "noUser"
                         if(isset($_GET['err']) && $_GET['err'] == "noUser") {
-                            // så echo denne fejlbesked
-                            echo "<span class='loginError'>Login error <br> No user found</span>";
+                            // then ehco this message
+                            echo "<span class='loginError'>Fejl i login <br> Ingen bruger fundet</span>";
                         }
                     ?>
                     <!-- ----- show this login form -->
@@ -112,73 +112,6 @@
     <hr class="hide400">
     <h1 class="tagline">FancyClothes.DK - tøj, kvalitet, simpelt!</h1>
     <hr>
-
-    <!-- form til at indsætte nye artikler uden at skulle igennem databasen -->
-    <?php
-        if((isset($_SESSION['username']))) { ?>
-            <div class="createArticle container">
-
-                <h3 class="center errorMsg">Opret ny vare:</h3>
-                <form action="includes/insert.php" method="post">
-                    <div>
-                        <label for="imgSrc">Billede</label>
-                        <input type="text" id="imgSrc" name="imgSrc" placeholder="Vælg billede" required>
-                    </div>
-                    
-                    <div>
-                        <label for="imgAlt">Alt tekst</label>
-                        <input type="text" id="imgAlt" name="imgAlt" placeholder="Billedets alttekst..." required>
-                    </div>
-                    
-                    <div>
-                        <label for="heading">Overskrift</label>
-                        <input type="text" id="heading" name="heading" placeholder="Overskrift..." required>
-                    </div>
-                    
-                    <div>
-                        <label for="content">Brødtekst</label>
-                        <textarea name="content" id="content" cols="30" rows="10" placeholder="Brødtekst..."></textarea>
-                    </div>
-                    
-                    <div>
-                        <label for="stars">Antal stjerner</label>
-                        <select name="stars" id="stars">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="category">Kategori</label>
-                        <select name="category" id="category" required>
-                            <option value="jakker">Jakker</option>
-                            <option value="bukser">Bukser</option>
-                            <option value="skjorter">Skjorter</option>
-                            <option value="strik">Strik</option>
-                            <option value="strik">Sko og støvler</option>
-                            <option value="tshirts">T-shirts og tanktops</option>
-                            <option value="tasker">Tasker</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="releaseDate">Dato for oprettelse</label>
-                        <input type="date" id="releaseDate" name="releaseDate" placeholder="Vælg dato for oprettelse..." required>
-                    </div>
-                    
-                    <div>
-                        <input type="submit" value="Opret" name="value">
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    <?php } ?>
-
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>

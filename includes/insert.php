@@ -17,10 +17,10 @@
     
     $stmt = $dbh->prepare($sql);
 
-    $stmt->execute([NULL, $imgSrc, $imgAlt, $title, $stars, $published, $username, $description, $category]);
+    $stmt->execute([NULL, $title, $imgSrc, $imgAlt, $published, $description, $username, $stars, $category]);
 
     $dbh = NULL;
     
 
-    header("location: ../index.php");
+    header("location: ../products.php");
 ?>

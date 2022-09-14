@@ -8,6 +8,7 @@
                 <div class="catTop">
                     <h4>Kategorier:</h4>
                 </div>
+
                 <div class="catMain">
                     <ul>
                         <li><a href="#">Jakker</a></li>
@@ -24,79 +25,36 @@
                 <div class="newsTop">
                     <h4>Tilmeld nyhedsbrev</h4>
                 </div>
+
                 <div class="newsMain">
                     <form action="">
                         <input type="text" placeholder="Navn">
                         <input type="email" placeholder="Email">
                 </div>
+
                 <div class="newsBottom">
                     <input type="submit" value="Tilmeld">
                     </form>
                 </div>
             </div>
         </aside>
+
         <div class="products">
             <h3>INSPIRATION</h3>
             <hr>
+
             <div class="inspiration">
                 <div class="catMen">
                     <img src="img/kategoriHerre.jpg" alt="">
                     <h5>Herretøj</h5>
                     <div class="action">Lær mere</div>
                 </div>
+
                 <div class="catWomen">
                     <img src="img/kategoriKvinde.jpg" alt="">
                     <h5>Kvindetøj</h5>
                     <div class="action">Lær mere</div>
                 </div>
-            </div>
-
-
-            <div class="frontProducts">
-            <?php
-                require_once './includes/connect.php';
-
-                // vælg alt* fra tabellen gamingarticle i databasen gamingwebsite
-                $sql = "SELECT product.*, users.userName FROM product JOIN users ON product.userId = users.userId";
-
-                // prepare alt data
-                $stmt = $dbh->prepare($sql);
-
-                // execute det prepared data
-                $stmt->execute();
-
-            
-                // mens der stadig er rækker i databasen, skal den kører igennem og indsætte data fra dem i en ny række
-                // hiv 1 række ud og gem det i variablen $row
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                    <!-- en article sat ind i loopet, så den generer en ny article for hver række i databasen -->
-                    <article>
-                        <img src="./img/<?php echo $row['imgSrc']; ?>" alt="<?php echo $row['imgAlt']; ?>">
-                        <div class="info">
-                            <h3 class="title"><?php echo $row['title']; ?></h3>
-                            <div class="stars">
-                                <i class='fa fa-star' aria-hidden='true'></i>
-                                <i class='fa fa-star' aria-hidden='true'></i>
-                                <i class='fa fa-star' aria-hidden='true'></i>
-                                <i class='fa fa-star-o' aria-hidden='true'></i>
-                                <i class='fa fa-star-o' aria-hidden='true'></i>
-                            </div>
-                        </div>
-                        <div class="description">
-                            <div class="published">
-                                <p>Oprettet: <?php echo $row['releaseDate']; ?> af <?php echo $row['userName'] ?></p>
-                            </div>
-                        </div>
-                            <p class="description">$<?php echo $row['description']; ?>
-                            <a href="#">Læs mere...</a></p>
-                            <p class="category">Kategori: <?php echo $row['category']; ?></p>
-                    </article>
-                <?php
-                }
-                ?>
-                
-            </div>
         </div>
     </main>
 

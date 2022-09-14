@@ -61,6 +61,7 @@
   padding: 0px 10px;
 }
 
+/* NAV BAR STYLING */
 .navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -121,17 +122,20 @@
   padding: 10px 20px;
 }
 
+/* my added styling */
 nav ul form .container {
   display: flex;
   max-height:25px;
   max-width: 70px;
 }
 
+/* LOGIN STYLING */
 .login {
   padding: 10px;
   font-family: "Karla", sans-serif;
 }
 
+/* my added styling */
 .login label, .login input {
   margin-right: 10px;
 }
@@ -153,6 +157,7 @@ nav ul form .container {
   text-decoration: none;
 }
 
+/* my added styling */
 .loginError {
   color:red;
   font-weight:700;
@@ -160,6 +165,7 @@ nav ul form .container {
   padding: 2px;
 }
 
+/* CREATE ARTCLE STYLING */
 .createArticle form > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,12 +184,37 @@ nav ul form .container {
           flex: 1;
 }
 
+/* MAIN STYLING */
 main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+/* main new user styling */
+/* my added styling */
+main .new {
+  margin: auto;
+}
+/* my added styling */
+main .new h1 {
+  font-size: 3rem;
+  margin: 40px 0;
+  text-align: center;
+}
+/* my added styling */
+main .new .lbl input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* user error styling */
+/* my added styling */
+main .new .userError {
+  color: red;
+}
+
+/* main aside styling */
 main aside {
   width: 250px;
 }
@@ -264,6 +295,7 @@ main aside > div .newsBottom {
   font-family: "Karla", sans-serif;
 }
 
+/* main products styling */
 main .products {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -404,6 +436,7 @@ main .products .frontProducts article .info .stars .fa-star-o {
 main .products .frontProducts article .description {
   background: #f5f5f5;
   padding: 20px 20px 0 20px;
+  flex-wrap: wrap;
 }
 
 main .products .frontProducts article .description .published {
@@ -442,6 +475,7 @@ main .products .frontProducts article .description a.deleteMe:hover {
   color: rgba(194, 194, 194, 0.8);
 }
 
+/* FOOTER STYLING */
 footer .contact {
   display: -webkit-box;
   display: -ms-flexbox;
