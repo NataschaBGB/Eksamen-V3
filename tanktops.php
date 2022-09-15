@@ -125,12 +125,12 @@
                 <div class="catMain">
                     <ul>
                         <li><a href="jakker.php">Jakker</a></li>
-                        <li><a href="#">Bukser</a></li>
-                        <li><a href="#">Skjorter</a></li>
-                        <li><a href="#">Strik</a></li>
+                        <li><a href="bukser.php">Bukser</a></li>
+                        <li><a href="skjorter.php">Skjorter</a></li>
+                        <li><a href="strik.php">Strik</a></li>
                         <li><a href="sko.php">Sko</a></li>
-                        <li><a href="#">T-shirts & Tank tops</a></li>
-                        <li><a href="#">Tasker</a></li>
+                        <li><a href="tanktops.php">T-shirts & Tank tops</a></li>
+                        <li><a href="tasker.php">Tasker</a></li>
                     </ul>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                 require_once './includes/connect.php';
 
                 // choose all* from table product in the db fancyclothes
-                $sql = "SELECT product.*, users.userName FROM product JOIN users ON product.userId = users.userId";
+                $sql = "SELECT * FROM product WHERE category = 'T-shirts'";
 
                 // prepare all data
                 $stmt = $dbh->prepare($sql);
@@ -200,7 +200,7 @@
                         </div>
                         <div class="description">
                             <div class="published">
-                                <p>Oprettet: <?php echo $row['releaseDate']; ?> af <?php echo $row['userName'] ?></p>
+                                <p>Oprettet: <?php echo $row['releaseDate']; ?></p>
                             </div>
                         </div>
                             <p class="description">$<?php echo $row['description']; ?>
@@ -219,6 +219,8 @@
         require_once "newArticle.php";
     ?>
 
+
+
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
@@ -234,4 +236,4 @@
 
 <?php
     include_once "footer.php";
-?>
+?>  
