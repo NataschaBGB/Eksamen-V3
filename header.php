@@ -47,7 +47,7 @@
         <?php
             // if session is active / if user is logged in
             if(isset($_SESSION['username'])) {
-                // write 'Velkommen + (the logged in username)
+                // echo this welcome message
                 echo "<h2>Velkommen " . $_SESSION['username'] . "</h2>";
             }
         ?>

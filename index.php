@@ -56,6 +56,41 @@
                     <div class="action">Lær mere</div>
                 </div>
         </div>
+
+        <h2 class="findUs">Find os her</h2>
+        <div class="googleMaps" id="googleMap"></div>
+
+        <script>
+        function myMap() {
+            var mapProp= {
+                // where is the map centered by coordinates
+                center:new google.maps.LatLng(56.12448447196708, 10.181933500160142),
+                // set zoom level
+                zoom:15,
+            };
+
+            // get map element by ID (id="googleMap" in div) and set it to specifications in function (mapProp)
+            var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+            // set new location with coordinates
+            var location = new google.maps.LatLng(56.12423330489366, 10.183821775975852);
+            // make new variable that contains info on the map marker
+            marker = new google.maps.Marker({
+                position: location,
+                // which map ((var map) element set in div above)
+                map: map,
+                title: "AspIT København"
+            });
+
+            // set marker on "location" variable
+            marker.setMap(location)
+        }
+
+    </script>
+
+        <!-- link to api key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARNTX4ANhNzXOHmakrwspgk6KtT8w8JSY&callback=myMap"></script>
+
     </main>
 
     <?php

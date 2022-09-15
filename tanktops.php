@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Produkter | FancyClothes.dk</title>
-    <meta name="description" content="Velkommen til FancyClothes.dk">
+    <meta name="description" content="Velkommen til FancyClothes.dk - Produkter, T-shirts og tanktops">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">

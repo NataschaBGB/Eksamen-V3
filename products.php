@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Produkter | FancyClothes.dk</title>
-    <meta name="description" content="Velkommen til FancyClothes.dk">
+    <meta name="description" content="Velkommen til FancyClothes.dk - Produkter.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -50,7 +50,7 @@
             // if session is active / if a user is logged in
             if(isset($_SESSION['username'])) {
                 // echo this welcome message
-                echo "<h2>Welcome " . $_SESSION['username'] . "</h2>";
+                echo "<h2>Velkommen " . $_SESSION['username'] . "</h2>";
             }
         ?>
 
@@ -125,12 +125,12 @@
                 <div class="catMain">
                     <ul>
                         <li><a href="jakker.php">Jakker</a></li>
-                        <li><a href="#">Bukser</a></li>
-                        <li><a href="#">Skjorter</a></li>
-                        <li><a href="#">Strik</a></li>
+                        <li><a href="bukser.php">Bukser</a></li>
+                        <li><a href="skjorter.php">Skjorter</a></li>
+                        <li><a href="strik.php">Strik</a></li>
                         <li><a href="sko.php">Sko</a></li>
-                        <li><a href="#">T-shirts & Tank tops</a></li>
-                        <li><a href="#">Tasker</a></li>
+                        <li><a href="tanktops.php">T-shirts & Tank tops</a></li>
+                        <li><a href="tasker.php">Tasker</a></li>
                     </ul>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                                 <p>Oprettet: <?php echo $row['releaseDate']; ?> af <?php echo $row['userName'] ?></p>
                             </div>
                         </div>
-                            <p class="description">$<?php echo $row['description']; ?>
+                            <p class="description"><?php echo $row['description']; ?>
                             <a href="#">Læs mere...</a></p>
                             <p class="category">Category: <?php echo $row['category']; ?></p>
                     </article>

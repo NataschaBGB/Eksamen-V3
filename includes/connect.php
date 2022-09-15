@@ -5,14 +5,16 @@
     $password = "";
 
     try {
-        // prøv at connecte til min host og databasen
+        // try to connect to the host and db
     $dbh = new PDO('mysql:host=localhost;dbname=fancyclothes; charset=utf8', $userName, $password);
     
+    // if it works
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Knæhøj karse!";
     }
-    // hvis det ikke virker, så fortæl (getMessage) hvad der gik galt
+    // if it doesnt work
     catch(PDOException $e) {
+        // tell me what went wrong (getMessage)
         echo "Connection failed: " . $e->getMessage();
     }
 ?>

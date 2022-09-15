@@ -11,20 +11,20 @@
     $stmt->execute([$username, $userpass]);
     $dbh = NULL;
 
-    // hvis $row (den variabel vi henter data fra db ned til) er tom (altså den ikke eksisterer i databasen)
+    // if $row (the variable we collect data from the db to) is empty / if it doesnt exists in the db
     if(empty($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-        // så send brugeren tilbage til forsiden, men med en fejl (?err = noUser)
+        // then send the user back to the front page with an error (?err = noUser)
         header("location: ../index.php?err=noUser");
     }
-    // hvis brugeren eksisterer i databasen
+    // if the user exists in the db
     else {
-        echo "en bruger er fundet!";
+        // echo "en bruger er fundet!";
         // start session
         session_start();
-        // gem brugernavn fra databasen (userName) i variabel $_SESSION
+        // save username from db (userName) in the variable $_SESSION
         $_SESSION['username'] = $row['userName'];
         $_SESSION['userId'] = $row['userId'];
-        // og retuner til forsiden
+        // and return to the front page
         header("location: ../index.php");
     }
 ?>
